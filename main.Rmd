@@ -72,10 +72,10 @@ acf(sim_2_1, main="ACF of AR(1)")
 pacf(sim_2_1, main="PACF of AR(1)")
 
  
-png("myndir/plot_2_1.png", width = 2400, height = 3200, res = 300)
+png("myndir/plot_2_1.png", width = 2400, height = 1600, res = 300)
 
 
-par(mfrow=c(3,1)) # stack in one column
+layout(matrix(c(1, 1, 2, 3), nrow = 2, byrow = TRUE))
 plot(sim_2_1, main="Simulated AR(1)")
 acf(sim_2_1, main="ACF of AR(1)")
 pacf(sim_2_1, main="PACF of AR(1)")
@@ -93,10 +93,10 @@ plot(sim_2_2, main="Simulated model")
 acf(sim_2_2, main="ACF")
 pacf(sim_2_2, main="PACF")
 
-png("myndir/plot_2_2.png", width = 2400, height = 3200, res = 300)
+png("myndir/plot_2_2.png", width = 2400, height = 1600, res = 300)
 
 
-par(mfrow=c(3,1)) # stack in one column
+layout(matrix(c(1, 1, 2, 3), nrow = 2, byrow = TRUE))
 plot(sim_2_2, main="Simulated model")
 acf(sim_2_2, main="ACF")
 pacf(sim_2_2, main="PACF")
