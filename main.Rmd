@@ -131,7 +131,6 @@ dev.off()
 
 ```{r 2_4, echo = FALSE}
 
-set.seed(123)
 burn <- 50   # burn-in periods
 n <- 200
 
