@@ -131,27 +131,29 @@ dev.off()
 
 ```{r 2_4, echo = FALSE}
 
-eps <- rnorm(n = 200)
+set.seed(123)
+burn <- 50   # burn-in periods
+n <- 200
 
-X <- numeric(200)
-for(t in 14:200) {  # start after lag 13
-  X[t] <- -0.6 * X[t-1] - (-0.8) * X[t-12] - (-0.6)*(-0.8) * X[t-13] + eps[t]
+eps <- rnorm(n + burn)
+
+X <- numeric(n + burn)
+for(t in 14:(n + burn)) {
+  X[t] <- -0.6 * X[t-1] + 0.8 * X[t-12] + 0.48 * X[t-13] + eps[t]
 }
 
-sim_2_4 <- ts(X, frequency=12)
+sim_2_4 <- ts(X[(burn+1):(burn+n)], frequency=12)
 
 plot(sim_2_4, main="Simulated model")
-acf(sim_2_4, main="ACF")
-pacf(sim_2_4, main="PACF")
+acf(sim_2_4, main="ACF"); pacf(sim_2_4, main="PACF")
 
-png("myndir/plot_2_4.png", width = 2400, height = 1600, res = 300)
-
-layout(matrix(c(1, 1, 2, 3), nrow = 2, byrow = TRUE))
-plot(sim_2_4, main="Simulated model")
-acf(sim_2_4, main="ACF")
-pacf(sim_2_4, main="PACF")
-
+png("myndir/plot_2_4.png", width=2400, height=1600, res=300)
+layout(matrix(c(1,1,2,3), nrow=2, byrow=TRUE))
+plot(sim_2_4, main="Simulated (1,0,0)×(1,0,0)_{12}")
+acf(sim_2_4, main="ACF (1,0,0)×(1,0,0)_{12}")
+pacf(sim_2_4, main="PACF (1,0,0)×(1,0,0)_{12}")
 dev.off()
+
 ```
 
 
