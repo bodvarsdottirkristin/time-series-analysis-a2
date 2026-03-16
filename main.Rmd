@@ -65,6 +65,7 @@ ggsave("myndir/acf_plot.png", plot = acf_plot, width = 8, height = 5, dpi = 300)
 ## 2.1
 
 ```{r 2_1, echo = FALSE}
+set.seed(67)
 sim_2_1 <- arima.sim(model = list(ar=-0.6), n=200) # -0.6 af thvi ad R vill hafa thetta a forminu [X_t = phi_1*X_{t-1} + epsilon] en vid gerum [X_t + phi_1 * X_{t-1} = epsilon]
 
 plot(sim_2_1, main="Simulated AR(1)")
@@ -86,7 +87,7 @@ dev.off()
 
 ## 2.2
 ```{r 2_2, echo = FALSE}
-
+set.seed(67)
 sim_2_2 = arima.sim(model = list(ar = c(rep(0,11),0.9)), n=200)
 
 plot(sim_2_2, main="Simulated model")
@@ -109,7 +110,7 @@ dev.off()
 ## 2.3
 
 ```{r 2_3, echo = FALSE}
-
+set.seed(67)
 sim_2_3 = arima.sim(model = list(ar=0.9, ma = c(rep(0,11),-0.7)), n=200)
 
 plot(sim_2_3, main="Simulated model")
@@ -130,8 +131,8 @@ dev.off()
 ## 2.4
 
 ```{r 2_4_, echo = FALSE}
-
-sim_2_4_ = arima.sim(model = list(ar=-0.6, ar = c(rep(0,11),-0.8)), n=200)
+set.seed(67)
+sim_2_4_ = arima.sim(model = list(ar = c(-0.6, rep(0, 10), -0.8, -0.48)), n=200)
 
 plot(sim_2_4, main="Simulated model")
 acf(sim_2_4, main="ACF"); pacf(sim_2_4_2, main="PACF")
@@ -147,7 +148,9 @@ dev.off()
 ## 2.5
 
 ```{r 2_5, echo = FALSE}
+set.seed(67)
 
+# Lags 2–11: 0
 sim_2_5 = arima.sim(model = list(ma = c(0.4, rep(0, 10), -0.8, -0.32)), n=200)
 plot(sim_2_5, main="Simulated model")
 acf(sim_2_5, main="ACF")
@@ -161,12 +164,11 @@ acf(sim_2_5, main="ACF")
 pacf(sim_2_5, main="PACF")
 
 dev.off()
-
 ```
 
 ## 2.6
 ```{r 2_6, echo = FALSE}
-
+set.seed(67)
 sim_2_6 = arima.sim(model = list(
     ar = c(rep(0, 11), 0.7),
     ma = -0.4
