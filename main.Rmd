@@ -132,16 +132,19 @@ dev.off()
 
 ```{r 2_4_, echo = FALSE}
 set.seed(67)
-sim_2_4_ = arima.sim(model = list(ar = c(-0.6, rep(0, 10), -0.8, -0.48)), n=200)
+sim_2_4 = arima.sim(model = list(ar = c(-0.6, rep(0, 10), -0.8, -0.48)), n=200)
 
-plot(sim_2_4, main="Simulated model")
-acf(sim_2_4, main="ACF"); pacf(sim_2_4_2, main="PACF")
-
-png("myndir/plot_2_4.png", width=2400, height=1600, res=300)
-layout(matrix(c(1,1,2,3), nrow=2, byrow=TRUE))
 plot(sim_2_4, main="Simulated model")
 acf(sim_2_4, main="ACF")
 pacf(sim_2_4, main="PACF")
+
+png("myndir/plot_2_4.png", width = 2400, height = 1600, res = 300)
+
+layout(matrix(c(1, 1, 2, 3), nrow = 2, byrow = TRUE))
+plot(sim_2_4, main="Simulated model")
+acf(sim_2_4, main="ACF")
+pacf(sim_2_4, main="PACF")
+
 dev.off()
 ```
 
