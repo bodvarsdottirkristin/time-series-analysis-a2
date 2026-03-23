@@ -66,7 +66,7 @@ ggsave("myndir/acf_plot.png", plot = acf_plot, width = 8, height = 5, dpi = 300)
 
 ```{r 2_1, echo = FALSE}
 set.seed(67)
-sim_2_1 <- arima.sim(model = list(ar=-0.6), n=200) # -0.6 af thvi ad R vill hafa thetta a forminu [X_t = phi_1*X_{t-1} + epsilon] en vid gerum [X_t + phi_1 * X_{t-1} = epsilon]
+sim_2_1 <- arima.sim(model = list(ar=0.6), n=200) # 0.6 af thvi ad R vill hafa thetta a forminu [X_t = phi_1*X_{t-1} + epsilon] en vid gerum [X_t + phi_1 * X_{t-1} = epsilon]
 
 plot(sim_2_1, main="Simulated AR(1)")
 acf(sim_2_1, main="ACF of AR(1)")
@@ -88,7 +88,7 @@ dev.off()
 ## 2.2
 ```{r 2_2, echo = FALSE}
 set.seed(67)
-sim_2_2 = arima.sim(model = list(ar = c(rep(0,11),0.9)), n=200)
+sim_2_2 = arima.sim(model = list(ar = c(rep(0,11),-0.9)), n=200)
 
 plot(sim_2_2, main="Simulated model")
 acf(sim_2_2, main="ACF")
